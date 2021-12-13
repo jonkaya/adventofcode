@@ -39,7 +39,7 @@ def syntax_score() -> int:
     with open(INPUT_FILE_NAME) as input:
         for line in input.readlines():
             line = line.strip()
-            
+
             row = list(line)
             total_points += process_row(row)
     
