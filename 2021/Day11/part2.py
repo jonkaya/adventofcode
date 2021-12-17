@@ -1,17 +1,16 @@
-
-from typing import List
+from typing import List, Set, Tuple
 
 INPUT_FILE_NAME = "input"
 
 NEIGHBORS = [
-    (1,1),
-    (1,0),
-    (1,-1),
-    (0,1),
-    (0,-1),
-    (-1,0),
-    (-1,-1),
-    (-1,1),
+    (1, 1),
+    (1, 0),
+    (1, -1),
+    (0, 1),
+    (0, -1),
+    (-1, 0),
+    (-1, -1),
+    (-1, 1),
 ]
 
 
@@ -39,6 +38,7 @@ def simulate_one_step(rows: List[List[int]]) -> int:
 
     return len(flashed) == (len(rows) * len(rows[0]))
 
+
 def dumbo_octopus() -> int:
     total_flashes: int = 0
 
@@ -57,6 +57,7 @@ def dumbo_octopus() -> int:
         step_number += 1
 
     return step_number
+
 
 if __name__ == "__main__":
     print(dumbo_octopus())

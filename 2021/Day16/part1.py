@@ -1,6 +1,4 @@
-import binascii
-
-from typing import Dict, List, Literal, Set, Tuple
+from typing import List, Tuple
 
 INPUT_FILE_NAME = "input"
 
@@ -23,8 +21,10 @@ hex_to_byte_str = {
     "F": "1111",
 }
 
+
 def hex_to_bin(hex: str) -> List[str]:
     return list("".join([hex_to_byte_str[hex_digit] for hex_digit in hex]))
+
 
 def bin_to_decimal(bin: List[str]) -> int:
     total: int = 0
@@ -32,9 +32,10 @@ def bin_to_decimal(bin: List[str]) -> int:
 
     for digit in reversed(bin):
         if digit == "1":
-            total += 2**i
+            total += 2 ** i
         i += 1
     return total
+
 
 def get_literal(buffer: List[str]) -> Tuple[int, List[str]]:
     literal: List[str] = list()
@@ -47,6 +48,7 @@ def get_literal(buffer: List[str]) -> Tuple[int, List[str]]:
             break
         del buffer[:5]
     return bin_to_decimal(literal), buffer
+
 
 def get_packet(buffer: List[str]) -> Tuple[int, List[str]]:
     total_version: int = 0
@@ -100,6 +102,7 @@ def decode_packet() -> int:
     total, buffer = get_packet(hex_to_bin(hex_message))
 
     return total
+
 
 if __name__ == "__main__":
     print(decode_packet())

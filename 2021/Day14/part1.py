@@ -1,18 +1,19 @@
-
 from collections import defaultdict
-from typing import Dict, List, Set, Tuple
+from typing import Dict, List
 
 INPUT_FILE_NAME = "input"
 
 ITERATION_COUNT = 10
 
+
 def split_pairs(s: str) -> List[str]:
     pairs: List[str] = list()
 
-    for i in range(len(s)-1):
-        pairs.append(s[i:i+2])
+    for i in range(len(s) - 1):
+        pairs.append(s[i : i + 2])
 
     return pairs
+
 
 def polymer_insert() -> int:
     rules: Dict[str, str] = dict()
@@ -40,7 +41,9 @@ def polymer_insert() -> int:
             if pairs[i] in rules:
                 pairs[i] = rules[pairs[i]]
 
-        polymer_template = "".join(pairs) + polymer_template[-1] # append the last char we initially removed in rules
+        polymer_template = (
+            "".join(pairs) + polymer_template[-1]
+        )  # append the last char we initially removed in rules
 
     counter: Dict[str, int] = defaultdict(int)
 
@@ -48,6 +51,7 @@ def polymer_insert() -> int:
         counter[c] += 1
 
     return max(counter.values()) - min(counter.values())
+
 
 if __name__ == "__main__":
     print(polymer_insert())

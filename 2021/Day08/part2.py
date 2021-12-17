@@ -1,9 +1,8 @@
-
-from typing import List
+from typing import Dict, List
 
 INPUT_FILE_NAME = "input"
 
-'''
+"""
 1: cf
 7: acf
 4: bcdf
@@ -18,7 +17,8 @@ INPUT_FILE_NAME = "input"
 
 8: abcdefg
 
-'''
+"""
+
 
 def seven_segment_decoder(input: List[str], numbers: List[str]) -> int:
 
@@ -37,7 +37,7 @@ def seven_segment_decoder(input: List[str], numbers: List[str]) -> int:
 
     # find 9
     four_and_seven = set(mapping[4] + mapping[7])
-    for i in range(len(input)-1, len(input)-4, -1):
+    for i in range(len(input) - 1, len(input) - 4, -1):
         diff = set(input[i]).difference(four_and_seven)
         if len(diff) == 1:
             mapping[9] = input[i]
@@ -81,8 +81,10 @@ def seven_segment_decoder(input: List[str], numbers: List[str]) -> int:
 
     return [signals["".join(sorted(signal))] for signal in numbers]
 
+
 def concat_digits(numbers: List[int]) -> int:
     return int("".join([str(num) for num in numbers]))
+
 
 def seven_segment_search() -> int:
 
@@ -91,12 +93,15 @@ def seven_segment_search() -> int:
     with open(INPUT_FILE_NAME) as input:
         for line in input.readlines():
             line = line.strip()
-            
+
             inputs, results = line.split(" | ")
 
-            total += concat_digits(seven_segment_decoder(inputs.split(), results.split()))
-            
+            total += concat_digits(
+                seven_segment_decoder(inputs.split(), results.split())
+            )
+
     return total
+
 
 if __name__ == "__main__":
     print(seven_segment_search())

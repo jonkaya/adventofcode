@@ -4,26 +4,12 @@ from typing import List
 
 INPUT_FILE_NAME = "input"
 
-MAPPING = {
-    ')': '(',
-    ']': '[',
-    '}': '{',
-    '>': '<'
-}
-REVERSE_MAPPING = {
-    '(': ')',
-    '[': ']',
-    '{': '}',
-    '<': '>'
-}
-CLOSING_CHARS = [')', ']', '}', '>']
+MAPPING = {")": "(", "]": "[", "}": "{", ">": "<"}
+REVERSE_MAPPING = {"(": ")", "[": "]", "{": "}", "<": ">"}
+CLOSING_CHARS = [")", "]", "}", ">"]
 
-SCORE = {
-    ')': 1,
-    ']': 2,
-    '}': 3,
-    '>': 4
-}
+SCORE = {")": 1, "]": 2, "}": 3, ">": 4}
+
 
 def process_row(row: List[str]) -> List[str]:
 
@@ -41,13 +27,14 @@ def process_row(row: List[str]) -> List[str]:
 
     return [REVERSE_MAPPING[key] for key in stack[::-1]]
 
+
 def syntax_score() -> int:
     points: List[int] = list()
-    
+
     with open(INPUT_FILE_NAME) as input:
         for line in input.readlines():
             line = line.strip()
-            
+
             row = list(line)
             comp_str = process_row(row)
 
@@ -56,8 +43,9 @@ def syntax_score() -> int:
                 total = total * 5 + SCORE[ch]
             if total > 0:
                 bisect.insort(points, total)
-    
-    return points[len(points)//2]
+
+    return points[len(points) // 2]
+
 
 if __name__ == "__main__":
     print(syntax_score())

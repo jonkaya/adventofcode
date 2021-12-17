@@ -3,6 +3,7 @@ from typing import List
 
 INPUT_FILE_NAME = "input"
 
+
 def split_by_index(rows: List[str], index: int = 0) -> List[List[str]]:
     zeros: List[str] = list()
     ones: List[str] = list()
@@ -20,7 +21,7 @@ def split_by_index(rows: List[str], index: int = 0) -> List[List[str]]:
 
 
 def life_support_rating() -> int:
-    
+
     rows: List[str] = list()
 
     with open(INPUT_FILE_NAME) as input:
@@ -45,11 +46,12 @@ def life_support_rating() -> int:
 
     for i in range(len(rows[0])):
         factor = len(rows[0]) - i - 1
-    
-        o2_generator_rating += int(most_common[0][i]) * 2**factor
-        co2_scrubber_rating += int(least_common[0][i]) * 2**factor
+
+        o2_generator_rating += int(most_common[0][i]) * 2 ** factor
+        co2_scrubber_rating += int(least_common[0][i]) * 2 ** factor
 
     return o2_generator_rating * co2_scrubber_rating
+
 
 if __name__ == "__main__":
     print(life_support_rating())

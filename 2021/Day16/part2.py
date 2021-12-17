@@ -1,7 +1,7 @@
 from functools import reduce
 from operator import mul
 
-from typing import Dict, List, Literal, Set, Tuple
+from typing import List, Tuple
 
 INPUT_FILE_NAME = "input"
 
@@ -34,7 +34,8 @@ OPS = {
     7: lambda it: 1 if it[0].get_val() == it[1].get_val() else 0,
 }
 
-class Packet():
+
+class Packet:
     def __init__(self, version, type):
         self.version = version
         self.type = type
@@ -47,8 +48,10 @@ class Packet():
         else:
             return OPS[self.type](self.subpackets)
 
+
 def hex_to_bin(hex: str) -> List[str]:
     return list("".join([hex_to_byte_str[hex_digit] for hex_digit in hex]))
+
 
 def bin_to_decimal(bin: List[str]) -> int:
     total: int = 0
@@ -56,9 +59,10 @@ def bin_to_decimal(bin: List[str]) -> int:
 
     for digit in reversed(bin):
         if digit == "1":
-            total += 2**i
+            total += 2 ** i
         i += 1
     return total
+
 
 def get_literal(buffer: List[str]) -> Tuple[int, List[str]]:
     literal: List[str] = list()
@@ -71,6 +75,7 @@ def get_literal(buffer: List[str]) -> Tuple[int, List[str]]:
             break
         del buffer[:5]
     return bin_to_decimal(literal), buffer
+
 
 def get_packet(buffer: List[str]) -> Tuple[Packet, List[str]]:
 
@@ -111,6 +116,7 @@ def get_packet(buffer: List[str]) -> Tuple[Packet, List[str]]:
 
     return packet, buffer
 
+
 def decode_packet() -> int:
     hex_message: str = None
 
@@ -125,6 +131,7 @@ def decode_packet() -> int:
     packet, buffer = get_packet(hex_to_bin(hex_message))
 
     return packet.get_val()
+
 
 if __name__ == "__main__":
     print(decode_packet())

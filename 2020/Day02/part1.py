@@ -1,5 +1,3 @@
-
-
 def part1():
     validCount = 0
     with open("input", "r") as f:

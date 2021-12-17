@@ -1,4 +1,4 @@
-from typing import Dict, List, Set, Tuple
+from typing import Tuple
 
 INPUT_FILE_NAME = "input"
 

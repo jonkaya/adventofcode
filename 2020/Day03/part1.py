@@ -1,10 +1,10 @@
-
 from typing import List
 
 INPUT_FILE_NAME = "input"
 
 SLOPE_X = 3
 SLOPE_Y = 1
+
 
 def tree_hits() -> int:
 
@@ -20,7 +20,7 @@ def tree_hits() -> int:
             board.append(list(line))
 
     curr_row, curr_col = 0, 0
-    
+
     while curr_row < len(board):
         if board[curr_row][curr_col] == "#":
             total_trees += 1

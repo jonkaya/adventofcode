@@ -1,8 +1,6 @@
-
-from typing import Dict, List, Set, Tuple
+from typing import List, Set, Tuple
 
 INPUT_FILE_NAME = "input"
-
 
 
 def fold_paper() -> int:
@@ -19,10 +17,10 @@ def fold_paper() -> int:
             elif line:
                 x, y = line.split(",")
                 dots.add((int(x), int(y)))
-    
+
     first_inst = fold_instructions.pop(0)
     folded_dots: Set[Tuple[int, int]] = set()
-    
+
     fold, fold_at = first_inst
     fold_at = int(fold_at)
 
@@ -47,8 +45,9 @@ def fold_paper() -> int:
             else:
                 # no fold
                 folded_dots.add(dot)
-            
+
     return len(folded_dots)
+
 
 if __name__ == "__main__":
     print(fold_paper())

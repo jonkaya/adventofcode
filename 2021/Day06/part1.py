@@ -1,19 +1,20 @@
-from collections import defaultdict
+from typing import List
 
 INPUT_FILE_NAME = "input"
 
 SIM_DAYS = 80
 
+
 def lantern_fish_sim() -> int:
-    
+
     fish_timer: List[int]
 
     with open(INPUT_FILE_NAME) as input:
         for line in input.readlines():
             line = line.strip()
-            
-            fish_timer = list(map(int, line.split(',')))
-    
+
+            fish_timer = list(map(int, line.split(",")))
+
     for day in range(SIM_DAYS):
         new_fish: List[int] = list()
 
@@ -23,12 +24,11 @@ def lantern_fish_sim() -> int:
                 new_fish.append(8)
             else:
                 fish_timer[i] -= 1
-        
+
         if new_fish:
             fish_timer.extend(new_fish)
 
     return len(fish_timer)
-
 
 
 if __name__ == "__main__":

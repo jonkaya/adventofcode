@@ -1,5 +1,5 @@
 import math
-from typing import Dict, List, Set, Tuple
+from typing import List, Tuple
 
 INPUT_FILE_NAME = "input"
 

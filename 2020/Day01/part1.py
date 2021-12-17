@@ -1,5 +1,3 @@
-
-
 def part1():
     mapping = dict()
 

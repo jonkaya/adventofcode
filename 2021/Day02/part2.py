@@ -1,5 +1,3 @@
-
-
 INPUT_FILE_NAME = "input"
 
 
@@ -19,13 +17,14 @@ def submarine_position() -> int:
 
             if direction == "forward":
                 horizontal += int(val)
-                depth += aim*int(val)
+                depth += aim * int(val)
             elif direction == "up":
                 aim -= int(val)
             elif direction == "down":
                 aim += int(val)
-    
+
     return horizontal * depth
+
 
 if __name__ == "__main__":
     print(submarine_position())

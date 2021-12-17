@@ -1,5 +1,4 @@
-
-from typing import Dict, List, Set, Tuple
+from typing import Dict, Set, Tuple
 
 INPUT_FILE_NAME = "input"
 
@@ -9,7 +8,14 @@ class Node:
         self.val = val
         self.children = set()
 
-def dfs(nodes: Dict[str, Node], start: str, end: str, path:Tuple[str], visited: Dict[str, bool]) -> int:
+
+def dfs(
+    nodes: Dict[str, Node],
+    start: str,
+    end: str,
+    path: Tuple[str],
+    visited: Dict[str, bool],
+) -> int:
     all_paths: Set[Tuple[str]] = set()
     if start == end:
         all_paths.add(path)
@@ -22,8 +28,17 @@ def dfs(nodes: Dict[str, Node], start: str, end: str, path:Tuple[str], visited: 
     for neighbor in nodes[start].children:
         if neighbor.val not in visited:
             new_visited = {k: v for k, v in visited.items()}
-            all_paths.update(dfs(nodes, neighbor.val, end, tuple(list(path) + [neighbor.val]), new_visited))
+            all_paths.update(
+                dfs(
+                    nodes,
+                    neighbor.val,
+                    end,
+                    tuple(list(path) + [neighbor.val]),
+                    new_visited,
+                )
+            )
     return all_paths
+
 
 def distinct_paths() -> int:
     nodes: Dict[str, Node] = dict()
@@ -43,6 +58,7 @@ def distinct_paths() -> int:
     all_paths = dfs(nodes, "start", "end", ("start",), dict())
 
     return len(all_paths)
+
 
 if __name__ == "__main__":
     print(distinct_paths())

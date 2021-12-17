@@ -1,4 +1,3 @@
-
 from typing import List
 
 INPUT_FILE_NAME = "input"
@@ -30,12 +29,10 @@ def tree_hits(slope_x: int, slope_y: int) -> int:
 
 
 if __name__ == "__main__":
-    slopes = [
-        (1,1), (3,1), (5,1), (7,1), (1,2)
-    ]
+    slopes = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
 
     product: int = 1
-    
+
     for slope in slopes:
         product *= tree_hits(slope[0], slope[1])
     print(product)

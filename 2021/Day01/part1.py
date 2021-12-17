@@ -1,4 +1,4 @@
-
+from typing import Optional
 
 INPUT_FILE_NAME = "input"
 
@@ -17,7 +17,7 @@ def larger_than_previous() -> int:
 
             if prev is not None and val > prev:
                 increased += 1
-                
+
             prev = val
     return increased
 

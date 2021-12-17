@@ -1,5 +1,3 @@
-
-
 def part2():
 
     with open("input", "r") as f:

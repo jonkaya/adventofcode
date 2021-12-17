@@ -1,10 +1,10 @@
-
 from collections import defaultdict
-from typing import Dict, List, Set, Tuple, final
+from typing import Dict
 
 INPUT_FILE_NAME = "input"
 
 ITERATION_COUNT = 40
+
 
 def polymer_insert() -> int:
     rules: Dict[str, str] = dict()
@@ -26,8 +26,8 @@ def polymer_insert() -> int:
                 key, val = line.split(" -> ")
                 rules[key] = val
 
-    for i in range(len(polymer_template)-1):
-        pair_counts[polymer_template[i:i+2]] += 1
+    for i in range(len(polymer_template) - 1):
+        pair_counts[polymer_template[i : i + 2]] += 1
         char_counter[polymer_template[i]] += 1
     char_counter[polymer_template[-1]] += 1
 
@@ -42,6 +42,7 @@ def polymer_insert() -> int:
         pair_counts = pair_counts_per_iteration
 
     return max(char_counter.values()) - min(char_counter.values())
+
 
 if __name__ == "__main__":
     print(polymer_insert())

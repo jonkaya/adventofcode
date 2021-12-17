@@ -1,11 +1,11 @@
 import math
 
-from collections import defaultdict
 from typing import List
 
 INPUT_FILE_NAME = "input"
 
-DIRECTIONS = [(1,0), (-1,0), (0,1), (0,-1)]
+DIRECTIONS = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+
 
 def process_row(rows: List[List[int]]) -> List[int]:
     # process mid row
@@ -22,7 +22,7 @@ def process_row(rows: List[List[int]]) -> List[int]:
     for i, val in enumerate(rows[1]):
         is_min = True
         for dir in DIRECTIONS:
-            newx, newy = 1+dir[0], i+dir[1]
+            newx, newy = 1 + dir[0], i + dir[1]
             if val >= get_value_at_index(newx, newy):
                 is_min = False
                 break
@@ -31,6 +31,7 @@ def process_row(rows: List[List[int]]) -> List[int]:
 
     return result
 
+
 def low_points() -> int:
     total_risk_level: int = 0
     window: List[List[int]] = list()
@@ -38,7 +39,7 @@ def low_points() -> int:
     with open(INPUT_FILE_NAME) as input:
         for line in input.readlines():
             line = line.strip()
-            
+
             row = list(map(int, list(line)))
             if len(window) == 0:
                 window.append([math.inf for _ in range(len(row))])
@@ -55,6 +56,7 @@ def low_points() -> int:
     total_risk_level += sum(low_pts) + len(low_pts)
 
     return total_risk_level
+
 
 if __name__ == "__main__":
     print(low_points())
